@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Побажання — приватна сторінка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,600;1,500&family=Commissioner:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0C1020; --ink-2:#141A31; --paper:#F2F0EA; --paper-dim:#A6AAC2;
+  --line:rgba(242,240,234,.14);
+  --violet:#7C6BF0; --cyan:#34B6E0; --green:#45CF97; --amber:#F2B33A; --crimson:#E2553D;
+  --spectrum:linear-gradient(90deg,#7C6BF0,#34B6E0 27%,#45CF97 50%,#F2B33A 76%,#E2553D);
+  --display:"Cormorant",Georgia,serif; --body:"Commissioner",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+body{ margin:0; background:var(--ink); color:var(--paper); font-family:var(--body);
+  font-weight:300; font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+.bar{ height:3px; background:var(--spectrum); }
+.wrap{ max-width:820px; margin:0 auto; padding:0 clamp(18px,5vw,44px) 80px; }
+h1{ font-family:var(--display); font-weight:600; font-size:clamp(32px,7vw,52px);
+  margin:44px 0 6px; line-height:1.05; }
+.sub{ color:var(--paper-dim); margin:0 0 34px; font-size:15px; }
+a{ color:var(--cyan); }
+:focus-visible{ outline:2px solid var(--cyan); outline-offset:3px; }
+
+label{ display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--paper-dim); margin:0 0 7px; }
+input{ width:100%; font-family:var(--body); font-size:16px; color:var(--paper);
+  background:rgba(242,240,234,.05); border:1px solid var(--line); border-radius:11px; padding:12px 14px; }
+input:focus{ border-color:var(--cyan); outline:none; }
+.btn{ display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-family:var(--body);
+  font-size:15px; padding:11px 19px; border-radius:999px; border:1px solid var(--line);
+  background:rgba(242,240,234,.04); color:var(--paper); text-decoration:none; }
+.btn:hover{ background:rgba(242,240,234,.1); }
+.btn-solid{ background:var(--paper); color:var(--ink); border-color:var(--paper); font-weight:600; }
+.btn-danger{ border-color:rgba(226,85,61,.5); color:#F5A896; }
+.btn-danger:hover{ background:rgba(226,85,61,.14); }
+.btn-sm{ font-size:13px; padding:8px 14px; }
+
+#login{ max-width:380px; display:grid; gap:16px; margin:0 0 40px; }
+.err{ color:var(--crimson); font-size:14px; margin:0; min-height:1.2em; }
+
+.tabs{ display:flex; gap:8px; margin:0 0 26px; flex-wrap:wrap; }
+.tab{ font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+  padding:9px 15px; border-radius:999px; border:1px solid var(--line); background:none;
+  color:var(--paper-dim); cursor:pointer; }
+.tab[aria-selected="true"]{ background:var(--paper); color:var(--ink); border-color:var(--paper); }
+.tab .n{ opacity:.6; margin-left:5px; }
+
+.wish{ border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:0 0 14px;
+  background:linear-gradient(180deg,rgba(242,240,234,.05),rgba(242,240,234,.02)); }
+.wish .head{ display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; margin:0 0 10px; }
+.wish .who{ font-size:18px; font-weight:600; }
+.wish .who.anon{ font-weight:300; font-style:italic; color:var(--paper-dim); }
+.wish .when{ font-family:var(--mono); font-size:12px; color:var(--paper-dim); margin-left:auto; }
+.wish .msg{ white-space:pre-wrap; }
+.pill{ font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+  padding:3px 9px; border-radius:999px; border:1px solid var(--line); color:var(--paper-dim); }
+.pill.warn{ border-color:rgba(242,179,58,.55); color:var(--amber); }
+
+.emails{ font-family:var(--mono); font-size:14px; line-height:1.9; word-break:break-all; }
+.note{ font-size:14px; color:var(--paper-dim); border-left:2px solid var(--line);
+  padding:2px 0 2px 14px; margin:0 0 22px; }
+.actions{ display:flex; gap:10px; flex-wrap:wrap; margin:22px 0 0; }
+.empty{ color:var(--paper-dim); font-style:italic; padding:26px 0; }
+.hidden{ display:none !important; }
+.ok{ color:var(--green); font-size:14px; }
+</style>
+</head>
+<body>
+<div class="bar"></div>
+<div class="wrap">
+
+  <h1>Побажання Павлові</h1>
+  <p class="sub" id="sub">Приватна сторінка. Видно лише після входу.</p>
+
+  <!-- ---------- login ---------- -->
+  <form id="login">
+    <div>
+      <label for="email">Пошта</label>
+      <input id="email" type="email" autocomplete="username" required>
+    </div>
+    <div>
+      <label for="pass">Пароль</label>
+      <input id="pass" type="password" autocomplete="current-password" required>
+    </div>
+    <div><button class="btn btn-solid" type="submit">Увійти</button></div>
+    <p class="err" id="loginErr"></p>
+  </form>
+
+  <!-- ---------- content ---------- -->
+  <div id="app" class="hidden">
+    <div class="tabs">
+      <button class="tab" id="tabWishes"  aria-selected="true">Побажання<span class="n" id="nWishes"></span></button>
+      <button class="tab" id="tabPhoto"   aria-selected="false">Не знімати<span class="n" id="nPhoto"></span></button>
+      <button class="tab" id="tabSubs"    aria-selected="false">Трансляція<span class="n" id="nSubs"></span></button>
+      <button class="btn btn-sm" id="logout" style="margin-left:auto">Вийти</button>
+    </div>
+
+    <section id="paneWishes">
+      <div id="wishList"></div>
+      <div class="actions">
+        <button class="btn btn-sm" id="exportWishes">Завантажити все як JSON</button>
+      </div>
+    </section>
+
+    <section id="panePhoto" class="hidden">
+      <p class="note">Ці гості просили не публікувати фото з ними. Перед тим як викладати альбом, звірте список.</p>
+      <div id="photoList"></div>
+    </section>
+
+    <section id="paneSubs" class="hidden">
+      <p class="note">Адреси зібрані лише для посилання на трансляцію. На сторінці обіцяно видалити їх до 30 вересня 2026 — кнопка внизу робить це остаточно.</p>
+      <div class="emails" id="subList"></div>
+      <div class="actions">
+        <button class="btn btn-sm" id="copySubs">Скопіювати всі адреси</button>
+        <button class="btn btn-sm btn-danger" id="wipeSubs">Видалити всі адреси назавжди</button>
+      </div>
+      <p class="ok hidden" id="wipeOk">Видалено. Гілка subscribers порожня.</p>
+    </section>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getDatabase, ref, get, remove }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const CONFIG = {
+  apiKey:      "AIzaSyBjS4aRzyu1xOe6LiaQ-DwTC_utl6c4HQs",
+  authDomain:  "pavlo-s-defense.firebaseapp.com",
+  databaseURL: "https://pavlo-s-defense-default-rtdb.europe-west1.firebasedatabase.app"
+};
+
+const app  = initializeApp(CONFIG);
+const auth = getAuth(app);
+const db   = getDatabase(app);
+
+const $ = id => document.getElementById(id);
+const JOIN = { defence:"на захисті", party:"на святкуванні", both:"цілий день", online:"онлайн" };
+
+/* ---------- auth ---------- */
+$("login").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  $("loginErr").textContent = "";
+  try{
+    await signInWithEmailAndPassword(auth, $("email").value.trim(), $("pass").value);
+  }catch(e){
+    $("loginErr").textContent = e.code === "auth/invalid-credential"
+      ? "Пошта або пароль не підходять."
+      : "Не вдалося увійти: " + e.code;
+  }
+});
+$("logout").addEventListener("click", () => signOut(auth));
+
+onAuthStateChanged(auth, user => {
+  $("login").classList.toggle("hidden", !!user);
+  $("app").classList.toggle("hidden", !user);
+  $("sub").textContent = user
+    ? "Оновлюється щоразу, коли ви відкриваєте цю сторінку."
+    : "Приватна сторінка. Видно лише після входу.";
+  if(user) load();
+});
+
+/* ---------- data ---------- */
+let wishes = [], subs = [];
+
+async function load(){
+  const snapW = await get(ref(db, "wishes"));
+  const snapS = await get(ref(db, "subscribers"));
+  wishes = toList(snapW.val());
+  subs   = toList(snapS.val());
+  render();
+}
+function toList(obj){
+  if(!obj) return [];
+  return Object.entries(obj)
+    .map(([id, v]) => ({ id, ...v }))
+    .sort((a,b) => (b.at || "").localeCompare(a.at || ""));   // найновіше вгорі
+}
+function when(iso){
+  if(!iso) return "";
+  const d = new Date(iso);
+  return new Intl.DateTimeFormat("uk-UA",
+    { day:"numeric", month:"long", hour:"2-digit", minute:"2-digit" }).format(d);
+}
+function esc(t){ return (t||"").replace(/[<>&]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;"}[c])); }
+
+function card(w){
+  const anon = w.anonymous;
+  const name = anon ? "анонімно" : (esc(w.name) || "без імені");
+  return `<article class="wish">
+    <div class="head">
+      <span class="who${anon ? " anon" : ""}">${name}</span>
+      ${w.joining ? `<span class="pill">${JOIN[w.joining] || esc(w.joining)}</span>` : ""}
+      ${w.noPhoto ? `<span class="pill warn">без фото</span>` : ""}
+      <span class="when">${when(w.at)}</span>
+    </div>
+    <div class="msg">${esc(w.message)}</div>
+  </article>`;
+}
+
+function render(){
+  const noPhoto = wishes.filter(w => w.noPhoto);
+  $("nWishes").textContent = wishes.length ? `· ${wishes.length}` : "";
+  $("nPhoto").textContent  = noPhoto.length ? `· ${noPhoto.length}` : "";
+  $("nSubs").textContent   = subs.length ? `· ${subs.length}` : "";
+
+  $("wishList").innerHTML  = wishes.length
+    ? wishes.map(card).join("")
+    : `<p class="empty">Побажань поки немає.</p>`;
+
+  $("photoList").innerHTML = noPhoto.length
+    ? noPhoto.map(w => `<article class="wish"><div class="head">
+        <span class="who">${w.anonymous ? "анонімно" : (esc(w.name) || "без імені")}</span>
+        <span class="when">${when(w.at)}</span></div></article>`).join("")
+    : `<p class="empty">Ніхто не просив.</p>`;
+
+  $("subList").innerHTML = subs.length
+    ? subs.map(s => esc(s.email)).join("<br>")
+    : `<p class="empty">Ніхто ще не підписався.</p>`;
+}
+
+/* ---------- tabs ---------- */
+const panes = { tabWishes:"paneWishes", tabPhoto:"panePhoto", tabSubs:"paneSubs" };
+Object.keys(panes).forEach(t => $(t).addEventListener("click", () => {
+  Object.keys(panes).forEach(k => {
+    $(k).setAttribute("aria-selected", String(k === t));
+    $(panes[k]).classList.toggle("hidden", k !== t);
+  });
+}));
+
+/* ---------- actions ---------- */
+$("exportWishes").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(wishes, null, 2)], { type:"application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "pobazhannia-pavlovi.json";
+  a.click(); URL.revokeObjectURL(a.href);
+});
+
+$("copySubs").addEventListener("click", async () => {
+  await navigator.clipboard.writeText(subs.map(s => s.email).join(", "));
+  $("copySubs").textContent = "Скопійовано";
+  setTimeout(() => $("copySubs").textContent = "Скопіювати всі адреси", 1800);
+});
+
+$("wipeSubs").addEventListener("click", async () => {
+  if(!confirm(`Видалити ${subs.length} адрес назавжди? Відновити буде неможливо.`)) return;
+  await remove(ref(db, "subscribers"));
+  subs = []; render();
+  $("wipeOk").classList.remove("hidden");
+});
+</script>
+</body>
+</html>

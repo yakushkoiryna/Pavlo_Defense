@@ -275,7 +275,7 @@ footer{ margin:88px 0 0; padding:44px 0 64px; border-top:1px solid var(--line); 
       <span class="who rise" data-i18n="heroWho">Pavlo Mai defends his</span>
       <span class="what rise"><em data-i18n="heroWhat">PhD thesis</em></span>
     </h1>
-    <p class="dateline rise"><span data-i18n="heroDate">Tuesday 15 September 2026</span><span class="sep">/</span><span data-i18n="heroTimes">10:00 &amp; 14:00</span> <span style="color:var(--paper-dim)" data-i18n="tzParis">Paris time</span></p>
+    <p class="dateline rise"><span data-i18n="heroDate">Tuesday 15 September 2026</span><span class="sep">/</span><span data-i18n="heroTimes">10:00 &amp; 14:00</span> <span style="color:var(--paper-dim); white-space:nowrap" data-i18n="tzParis">Paris time</span></p>
     <p class="localtime rise" id="localtime"></p>
     <p class="place rise" data-i18n="heroPlace">Campus de La Doua — and online, wherever you are.</p>
 
@@ -294,6 +294,7 @@ footer{ margin:88px 0 0; padding:44px 0 64px; border-top:1px solid var(--line); 
       <a class="btn" href="#defence"><span class="dot" style="background:var(--violet)"></span><span data-i18n="ctaLyon">Attend in person</span></a>
       <a class="btn" href="#online"><span class="dot" style="background:var(--crimson)"></span><span data-i18n="ctaOnline">Watch online</span></a>
       <a class="btn" href="#gift"><span class="dot" style="background:var(--amber)"></span><span data-i18n="ctaGift">Group gift</span></a>
+      <a class="btn" href="#after" data-slot="ctaAfter" style="display:none"><span class="dot" style="background:var(--green)"></span><span data-i18n="ctaAfter">Photos and video</span></a>
     </div>
   </header>
 
@@ -535,7 +536,7 @@ const T = {
     s6Title:"Photos and video", s6Note:"after the day",
     s6Body:"Nothing here yet. After 15 September this is where the album and the recording of the defence will appear — same page, same link, no need to hunt for anything.",
     s6Ready:"Here is the day, as it happened. If you took photos of your own, send them to Iryna and they will go into the album.",
-    albumBtn:"Open the album", videoBtn:"Watch the defence",
+    albumBtn:"Open the album", videoBtn:"Watch the defence", ctaAfter:"Photos and video",
     addrDefence:"Amphitheatre, ground floor\nDomaine de la Doua, 20 avenue Gaston Berger, 69100 Villeurbanne",
     addrParty:"Lippmann building, ground floor \u2014 across the park from the library",
     photoNote:"Photos will be taken during the day. If you'd rather not appear, tick the box in the wish form below and we'll leave you out.",
@@ -591,7 +592,7 @@ const T = {
     s6Title:"Photos et vidéo", s6Note:"après la journée",
     s6Body:"Rien ici pour l'instant. Après le 15 septembre, l'album et l'enregistrement de la soutenance apparaîtront à cet endroit — même page, même lien, rien à chercher.",
     s6Ready:"La journée, telle qu'elle s'est passée. Si vous avez pris des photos, envoyez-les à Iryna : elles rejoindront l'album.",
-    albumBtn:"Ouvrir l'album", videoBtn:"Revoir la soutenance",
+    albumBtn:"Ouvrir l'album", videoBtn:"Revoir la soutenance", ctaAfter:"Photos et vidéo",
     addrDefence:"Amphith\u00e9\u00e2tre, rez-de-chauss\u00e9e (RDC)\nDomaine de la Doua, 20 avenue Gaston Berger, 69100 Villeurbanne",
     addrParty:"B\u00e2timent Lippmann, rez-de-chauss\u00e9e \u2014 de l'autre c\u00f4t\u00e9 du parc, en face de la BU",
     photoNote:"Des photos seront prises pendant la journ\u00e9e. Si vous pr\u00e9f\u00e9rez ne pas appara\u00eetre, cochez la case dans le formulaire ci-dessous et nous en tiendrons compte.",
@@ -647,7 +648,7 @@ const T = {
     s6Title:"Фото і відео", s6Note:"після події",
     s6Body:"Тут поки порожньо. Після 15 вересня саме тут з'являться альбом і запис захисту — та сама сторінка, те саме посилання, шукати нічого не треба.",
     s6Ready:"Той день, яким він був. Якщо ви знімали своє — надішліть Ірині, і кадри потраплять до альбому.",
-    albumBtn:"Відкрити альбом", videoBtn:"Переглянути захист",
+    albumBtn:"Відкрити альбом", videoBtn:"Переглянути захист", ctaAfter:"Фото і відео",
     addrDefence:"\u0410\u043c\u0444\u0456\u0442\u0435\u0430\u0442\u0440, \u043f\u0435\u0440\u0448\u0438\u0439 \u043f\u043e\u0432\u0435\u0440\u0445 (RDC)\nDomaine de la Doua, 20 avenue Gaston Berger, 69100 Villeurbanne",
     addrParty:"\u041a\u043e\u0440\u043f\u0443\u0441 Lippmann, \u043f\u0435\u0440\u0448\u0438\u0439 \u043f\u043e\u0432\u0435\u0440\u0445 \u2014 \u0447\u0435\u0440\u0435\u0437 \u043f\u0430\u0440\u043a \u043d\u0430\u0432\u043f\u0440\u043e\u0442\u0438 \u0431\u0456\u0431\u043b\u0456\u043e\u0442\u0435\u043a\u0438",
     photoNote:"\u041f\u0440\u043e\u0442\u044f\u0433\u043e\u043c \u0434\u043d\u044f \u0437\u043d\u0456\u043c\u0430\u044e\u0442\u044c. \u042f\u043a\u0449\u043e \u043d\u0435 \u0445\u043e\u0447\u0435\u0442\u0435 \u043f\u043e\u0442\u0440\u0430\u043f\u0438\u0442\u0438 \u0432 \u043a\u0430\u0434\u0440, \u043f\u043e\u0437\u043d\u0430\u0447\u0442\u0435 \u0446\u0435 \u0443 \u0444\u043e\u0440\u043c\u0456 \u043d\u0438\u0436\u0447\u0435 \u2014 \u0456 \u043c\u0438 \u0432\u0440\u0430\u0445\u0443\u0454\u043c\u043e.",
@@ -757,6 +758,7 @@ function fillSlots(){
   const haveAfter = CONFIG.albumUrl || CONFIG.videoUrl;
   q('[data-slot="afterBody"]').textContent = haveAfter ? T[lang].s6Ready : T[lang].s6Body;
   after.style.display = haveAfter ? "" : "none";
+  q('[data-slot="ctaAfter"]').style.display = haveAfter ? "" : "none";
   albumL.style.display = CONFIG.albumUrl ? "" : "none";
   videoL.style.display = CONFIG.videoUrl ? "" : "none";
   if(CONFIG.albumUrl) albumL.href = CONFIG.albumUrl;
